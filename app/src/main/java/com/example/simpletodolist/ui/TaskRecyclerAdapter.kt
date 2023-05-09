@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.simpletodolist.R
 import com.example.simpletodolist.repository.propertiesTask
 
-class TaskRecyclerAdapter(private val taskList: List<propertiesTask>) : RecyclerView.Adapter<TaskViewHolder>() {
+class TaskRecyclerAdapter(private val taskList: List<propertiesTask>,private val onClickDelete:(Int) -> Unit) : RecyclerView.Adapter<TaskViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -15,7 +15,7 @@ class TaskRecyclerAdapter(private val taskList: List<propertiesTask>) : Recycler
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val item = taskList[position]
-        holder.pain(item)
+        holder.render(item, onClickDelete)
     }
 
     override fun getItemCount(): Int {
